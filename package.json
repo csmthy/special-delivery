@@ -1,0 +1,24 @@
+{
+  "name": "special-delivery",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "build:single": "vite build && node tools/inline.mjs dist \"dist/Darrow & Rufus - Special Delivery.html\""
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.170.0",
+    "typescript": "*",
+    "vite": "*",
+    "vitest": "*"
+  },
+  "description": "3D browser game in TypeScript and three.js: three pets bring the backyard's wildlife home before Mom gets back",
+  "license": "MIT"
+}
