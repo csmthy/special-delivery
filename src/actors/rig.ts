@@ -717,7 +717,9 @@ export class Quadruped {
     y = y * (1 - sitPose) + (s.bodyY * 0.72) * sitPose;
     let pitch = 0;
     if (gait === 'bound' && moving) pitch = Math.sin(this.phase * Math.PI * 2) * 0.09;
-    pitch += -0.72 * sitPose + 0.1 * sm.crouch + playWiggle * 0.18 - playHop * 0.15 - 0.05 * sm.proud * (1 - sitPose);
+    // sitting tips the chest up; long, low bodies (Penny) tip less so the hindquarters stay on the floor
+    const sitPitch = Math.min(0.72, Math.asin(Math.max(0, Math.min(1, (s.bodyY * 0.72 - s.r * 0.35) / (s.len / 2)))));
+    pitch += -sitPitch * sitPose + 0.1 * sm.crouch + playWiggle * 0.18 - playHop * 0.15 - 0.05 * sm.proud * (1 - sitPose);
     let roll = -p.turn * 0.04 * Math.min(1, spd / 2);
     // pounce leap arc
     if (p.leap >= 0) {

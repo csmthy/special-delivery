@@ -683,7 +683,8 @@ export class Game {
     PET_IDS.forEach((id, i) => {
       const q = this.pets[id];
       q.setFurLevel(this.furLevel); // close-up on the select screen: full fur for everyone
-      q.root.position.set(BASKET.x - 0.7 + i * 0.7, FLOOR, BASKET.z + 0.6 - (i === 1 ? 0.12 : 0));
+      // Penny (right) sits a little further in and back so the plant and frame edge don't crop her
+      q.root.position.set(BASKET.x - 0.66 + i * 0.64, FLOOR, BASKET.z + 0.6 - (i === 1 ? 0.12 : i === 2 ? 0.08 : 0));
       q.root.rotation.set(0, 0.35 - i * 0.35, 0);
       q.p = { ...q.p, lie: 0, sit: 0, speed: 0, crouch: 0, carry: 0, proud: 0, leap: -1 };
     });
